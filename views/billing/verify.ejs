@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DOPE MARKET</title>
+    <link rel="stylesheet" href="/css/landing/bundle.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/landing/tootik.min.css" type="text/css">
+
+    <link rel="stylesheet" href="/css/landing/pagepiping.css" type="text/css">
+    <link rel="stylesheet" href="/css/landing/landing.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">DOPE MARKET</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link active" href="/billing">Home <span class="sr-only">(current)</span></a>
+      <!-- <a class="nav-link" href="/admin/transactions">Transactions</a> -->
+    </div>
+    <div class="navbar-nav">
+      <a class="nav-link" href="/logout">Logout</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    <div class="row text-center my-5">
+        <form action="/billing/newcustomer/<%=id%>/verify" method="POST">
+            <div class="row form-group">
+            <label for="a">Mobile Number</label>
+            <input type="number" value="<%=mobile%>" class="form-control" name="a"disabled>
+            </div>
+            <div class="row form-group">
+                <label for="key">Verification code</label>
+                <input type="text" class="form-control" id="key" name="key">
+                </div>
+            <div class="text-center">
+                <button class="btn btn-outline-success">Submit</button>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/billing/newcustomer/<%=id%>/change?_method=PATCH" method="POST">
+               <div class="row form-group">
+                <label for="c">Mobile Number</label>
+                <input type="number" name="mobile" class="form-control" name="c">
+               </div>
+               <div class="text-center">
+                <button class="btn btn-outline-success">CHANGE</button>
+               </div>
+            </form>
+            
+        </div>
+        <div class="col-md-6 text-center">
+            <a href="/billing/counter">
+                GO TO BILLING
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<%-include("../partials/footer.ejs")%>

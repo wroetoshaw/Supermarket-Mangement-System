@@ -1,0 +1,156 @@
+<%- include("../partials/header.ejs") %>
+<div class="wrap_container cursor-light">
+    <div class="main_container">
+        <div class="side_nav">
+            <div class="my-sticky-nav">
+                <div class="side_menu">
+                    <div id="my_tog" class="my_tog link" onmouseover="my_click();">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div>
+                    </div>
+                    <!-- Sticky Nav -->
+                    <nav class="side-nav-menu">
+                        <ul class="nav-menu nav-fill" id="menu">
+                            <li class="nav-item">
+                                <a data-menuanchor="home-banner" class="nav-link link active line"  href="/manager">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-menuanchor="all-products" class="nav-link link line" href="/manager/addproducts">Add Products</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a data-menuanchor="reviews" class="nav-link link line" href="/admin/purchaseorder">Purchase  Details</a>
+                            </li> -->
+                            <li class="nav-item">
+                              <a data-menuanchor="reviews" class="nav-link link line" href="/manager/supdetails">Supplier Details</a>
+                          </li>
+                          <li class="nav-item">
+                            <a data-menuanchor="reviews" class="nav-link link line" href="/manager/proddetails">Product Details</a>
+                        </li>
+                        <li class="nav-item">
+                          <a data-menuanchor="reviews" class="nav-link link line" href="/manager/opentender">Open Tender</a>
+                      </li>
+                      <li class="nav-item">
+                        <a data-menuanchor="reviews" class="nav-link link line" href="/manager/tender/details">Tender Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-menuanchor="reviews" class="nav-link link line" href="/logout">Logout</a>
+                    </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Nav-Bar -->
+        <header id="home">
+            <nav class="navbar navbar-light bg-light cursor-light d-md-none">
+                <div class="my_nav_tog d-block d-md-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+            <div class="broad">
+                <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
+                <nav class="side-nav-menu">
+  
+                    <ul class="nav-menu nav-fill">
+                      <li class="nav-item">
+                        <a class="nav-link "  href="/manager">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/manager/addproducts">Add Products</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link " href="/admin/purchaseorder">Purchase  Details</a>
+                    </li> -->
+                    <li class="nav-item">
+                      <a class="nav-link active" href="/manager/supdetails">Supplier Details</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="/manager/proddetails">Product Details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="/manager/opentender">Open Tender</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link "  href="/manager/tender/details">Tender Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/logout">Logout</a>
+            </li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+  </div>
+
+  
+<%if(products[0] && count!=0){%>
+  <section class="section slide1 p-0" id="home-banner">
+        <div class="slider-area" id="slider-area">
+
+            <div class="container">
+  <div class="container my-5">
+    <h1 class="text-center">OPEN A TENDER</h1>
+    <form action="/manager/opentender" method="POST">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="name">Tender Name</label>
+          <input type="text" class="form-control" id="name" name="name" value="Tender One" required>
+        </div>
+       </div>
+       <div class="row">
+        <div class="form-group col-md-6">
+          <label for="sd">Start Date</label>
+          <input type="date" class="form-control" id="sd" name="sd" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="st">Start Time</label>
+          <input type="time" class="form-control" id="st" name="st" required>
+        </div>
+       </div>
+       <div class="row">
+        <div class="form-group col-md-6">
+          <label for="ed">End Date</label>
+          <input type="date" class="form-control" id="ed" name="ed" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="et">End Time</label>
+          <input type="time" class="form-control" id="et" name="et" required>
+        </div>
+       </div>
+       <div class="row">
+        <div class="form-group col-md-12">
+            <label for="prod"></label>
+            <select class="form-control" name="products" id="prod" multiple required>
+             <% for(let i =0;i<=products.length-1;i++){%>
+                <option value="<%=products[i].p_id%>" ><%=products[i].p_name%></option>
+              <%}%>
+            </select>
+        </div>
+       </div>
+       <div class="text-center">
+         <button class="btn btn-outline-success">Submit</button>
+       </div>
+    </form>
+  </div>
+            </div>
+        </div>
+  </section>
+
+<%}else{%>
+  <%if(!products[0]){%>
+  <h1 class="text-center my-5" >PLEASE ADD PRODUCTS BEFORE OPENING A TENDER</h1>
+  <%}%>
+  <%if(Number(count)==0){%>
+    <h1 class="text-center my-5" >PLEASE ADD SUPPLIERS BEFORE OPENING A TENDER!!</h1>
+  <%}%>
+<%}%>
+
+
+  <%- include("../partials/footer.ejs") %>
