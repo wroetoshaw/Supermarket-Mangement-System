@@ -8,7 +8,6 @@
 
 # Gopagani Karthik Goud - 20BKT0130
 
-# Tanmay Vyas - 20BCE0755
 
 # ---------------------------
 
